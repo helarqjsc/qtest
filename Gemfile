@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.1'
 gem 'haml-rails'
+gem 'factory_girl_rails'  
 
 group :development do
 	gem 'sqlite3'
