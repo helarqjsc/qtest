@@ -1,10 +1,12 @@
-Factory.define :comment do |f|
-	f.content = 'very interesting'
-	f.association :question
-end
+FactoryGirl.define do
+	factory :comment do
+		content 'very interesting'
+		association :question
+	end
 
-Factory.define :question do |f|
-	f.question_content = 'was scooby-doo a dog?'
-	f.answer_content = 'yes he was!'
-	f.has_answer = true
+	factory :question do 
+		question_content 'was scooby-doo a dog?'
+		answer_content 'yes he was!'
+		has_answer true
+	end
 end
