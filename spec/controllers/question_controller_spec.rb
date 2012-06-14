@@ -1,6 +1,13 @@
 require 'spec_helper'
 
 describe QuestionController do
-	it {respond_to :show_all}
-	it {respond_to :add}
+	it 'should render question list on #show_all action' do
+		get 'show_all'
+		response.should be_success
+	end	
+	
+	it 'should create question in db on #add action' do
+		post 'add', {question_content: 'what is the meaning of life?'}
+		Question.all.should_not be_empty
+	end
 end
