@@ -5,7 +5,7 @@ describe CommentController do
 
 	it 'should create comment in db on #add action' do
 		question = FactoryGirl.create(:question)
-		post 'add', {content: 'lorem ipsum dolor sit amet', q_id: question.id}
+		post 'add', {content: 'lorem ipsum dolor sit amet', id: question.id}
 		Comment.all.should_not be_empty
 	end
 end
