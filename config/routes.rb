@@ -1,5 +1,10 @@
 Qtest::Application.routes.draw do
-  get '/' => 'Main#index'
+  match '/' => 'Question#show_all'
+  match '/add' => 'Question#add', method: 'post', as: 'add_question'
+  match '/:id' => 'Question#show', as: 'show_question'
+  match '/:q_id/add' => 'Comment#add', method: 'post', as: 'add_comment'
+
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

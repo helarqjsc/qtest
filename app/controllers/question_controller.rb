@@ -3,6 +3,10 @@ class QuestionController < ApplicationController
 		@questions = Question.all
 	end
 	
+	def show
+		@question = Question.find(params[:id])
+	end
+	
 	def add
 		Question.new(question_content: params[:question_content]).save
 	end

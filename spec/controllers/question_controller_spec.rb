@@ -1,8 +1,13 @@
 require 'spec_helper'
 
 describe QuestionController do
-	it 'should render question list on #show_all action' do
+	it 'should render a question list on #show_all action' do
 		get 'show_all'
+		response.should be_success
+	end	
+	
+	it 'should render a single question on #show action' do
+		get 'show'
 		response.should be_success
 	end	
 	

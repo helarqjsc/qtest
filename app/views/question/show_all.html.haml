@@ -1,0 +1,15 @@
+%form{method: 'post', action: "#{add_question_path}"}
+- @questions.each do |q|
+	%h3= "Question ##{q.id}"
+	%p 
+		%b Q: 
+		= q.question_content
+	- if q.has_answer then
+		- url_text = 'Leave a comment'
+		%p
+			%b A:
+			= q.answer_content
+	- else
+		- url_text = 'Answer the question'
+	%a{href: "#{show_question_path(q)}"}= url_text
+	%hr
