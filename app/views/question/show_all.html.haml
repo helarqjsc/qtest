@@ -1,15 +1,23 @@
-%form{method: 'post', action: "#{add_question_path}"}
 - @questions.each do |q|
-	%h3= "Question ##{q.id}"
+	%a{href: show_question_path(q)}
+		%h3= "Question ##{q.id}"
 	%p 
 		%b Q: 
 		= q.question_content
 	- if q.has_answer then
-		- url_text = 'Leave a comment'
 		%p
 			%b A:
 			= q.answer_content
+		- url_text = 'Leave a comment'
 	- else
 		- url_text = 'Answer the question'
-	%a{href: "#{show_question_path(q)}"}= url_text
+	%a{href: show_question_path(q)}= url_text
+	- if q.has_answer then
+		%span= ' | ' + q.comment.count.to_s + ' comment(s)'
 	%hr
+	
+%form{method: 'post', action: add_question_path}
+	%h2 Ask a question:
+	%p
+		%textarea{name: 'content', cols: 40, rows: 5}
+	%input{type: 'submit'}

@@ -1,10 +1,10 @@
 Qtest::Application.routes.draw do
-  match '/' => 'Question#show_all'
-  match '/add' => 'Question#add', method: 'post', as: 'add_question'
-  match '/:id' => 'Question#show', as: 'show_question'
-  match '/:q_id/add' => 'Comment#add', method: 'post', as: 'add_comment'
+	match '/' => 'Question#show_all', as: 'root'
+	match '/add' => 'Question#add', method: 'post', as: 'add_question'
+	match '/:id/add' => 'Comment#add', method: 'post', as: 'add_comment'
+	match '/:id/answer' => 'Question#answer', method: 'post', as: 'answer_question'
+	match '/:id' => 'Question#show', as: 'show_question'
 
-  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

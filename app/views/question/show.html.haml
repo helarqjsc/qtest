@@ -1,0 +1,29 @@
+%a{href: root_path}
+	Return to questions list
+- q = @question
+%h3= "Question ##{q.id}"
+%p 
+	%b Q: 
+	= q.question_content
+- if q.has_answer then
+	%p
+		%b A:
+		= q.answer_content
+	- form_title = 'Leave a comment:'
+	- form_action_path = add_comment_path
+- else
+	- form_title = 'Answer the question:'
+	- form_action_path = answer_question_path
+	
+%div{style: 'margin-left: 50px; margin-top: 50px'}	
+	- q.comment.each_with_index do |c, i|
+		%h4= "Comment ##{i+1}"
+		%p
+			=c.content
+		%hr
+
+	%form{method: 'post', action: form_action_path}
+		%h2= form_title
+		%p
+			%textarea{name: 'content', cols: 40, rows: 5}
+		%input{type: 'submit'}

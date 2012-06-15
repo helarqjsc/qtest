@@ -8,6 +8,17 @@ class QuestionController < ApplicationController
 	end
 	
 	def add
-		Question.new(question_content: params[:question_content]).save
+		q = Question.new(question_content: params[:content])
+		q.save
+		redirect_to({action: 'show', id: q.id})
+	end
+	
+	def answer
+		q = Question.find(params[:id])
+		raise "already has answer" if q.has_answer		
+		q.answer_content = params[:content]
+		q.has_answer = true
+		q.save
+		redirect_to({action: 'show', id: q.id})
 	end
 end
